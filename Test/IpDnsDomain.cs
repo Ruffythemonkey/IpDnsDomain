@@ -10,7 +10,7 @@ namespace Test
         [Fact]
         public void StringToHttpScheme()
         {
-            var urls = "testsite.de".CreateHttpVariants();
+            var urls = "localhost.de".CreateHttpVariants();
 
             Assert.NotEmpty(urls);
             Assert.All(urls, e => e.StartsWith("http"));
@@ -71,8 +71,6 @@ namespace Test
             var results = await Task.WhenAll(tasks);
 
             Assert.IsType<IpDnsUrl>(results.Last());
-
-
         }
     }
 }
