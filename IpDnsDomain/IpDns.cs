@@ -9,7 +9,9 @@ namespace IpDnsDomain
         public IpDnsUrl? IsValidUrl(string url)
         {
             tokenSource.Cancel();
-            tokenSource.TryReset();
+            tokenSource.Dispose();
+            tokenSource = new();
+
             foreach (var item in url.CreateHttpVariants())
             {
                 try
@@ -34,7 +36,8 @@ namespace IpDnsDomain
         public async Task<IpDnsUrl?> IsValidUrlAsync(string url)
         {
             await tokenSource.CancelAsync();
-            tokenSource.TryReset();
+            tokenSource.Dispose();
+            tokenSource = new();
 
             foreach (var item in url.CreateHttpVariants())
             {
@@ -59,7 +62,7 @@ namespace IpDnsDomain
         {
             result = null;
             tokenSource.Cancel();
-            tokenSource.TryReset();
+            tokenSource = new();
 
             foreach (var item in url.CreateHttpVariants())
             {
@@ -80,6 +83,9 @@ namespace IpDnsDomain
             }
             return false;
         }
+
+  
+
     }
 
 }
