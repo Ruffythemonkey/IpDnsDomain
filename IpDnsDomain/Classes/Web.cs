@@ -7,7 +7,7 @@ internal abstract class Web
         Timeout = TimeSpan.FromSeconds(3)
     };
 
-    public readonly CancellationTokenSource tokenSource = new CancellationTokenSource();
+    public CancellationTokenSource tokenSource = new CancellationTokenSource();
 
     public TimeSpan Timeout { get => Client.Timeout; set => Client.Timeout = value; }
 
