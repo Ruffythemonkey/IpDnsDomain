@@ -1,5 +1,7 @@
 # IpDnsDomain
 
+# Nuget: https://www.nuget.org/packages/IpDnsDomain/
+
 # Validating Address or Ip is Reachble
 ```c#
 var result = DomainValidator.GetIpDnsUrl("[2a02:2e0:3fe:1001:302::]");
