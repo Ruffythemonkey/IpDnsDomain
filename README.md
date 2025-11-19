@@ -7,4 +7,11 @@ var result = DomainValidator.GetIpDnsUrl("http://heise.de");
 var result = DomainValidator.GetIpDnsUrl("localhost");
 var result = DomainValidator.GetIpDnsUrl("192.168.178.111:234");
 var result = DomainValidator.TryGetIpDnsUrl("https://heise.de", out var ipDnsUrl);;
+
+if((await DomainValidator.GetIpDnsUrl("192.168.178.111:234")) is IpDnsUrl domain)
+{
+  //this is an domainaddress, ipv4, ipv6 (with ports or without ports) which is reachable
+   var domain = doamin.ReachableUrl;
+}
+
 ```
