@@ -20,7 +20,7 @@ namespace IpDnsDomain
         /// <param name="AdressOrIp">The address or IP string to validate. This can be a domain name, URL, or IPv4/IPv6 address.</param>
         /// <returns>An IpDnsUrl instance containing the parsed and validated address or IP information. If the input is not
         /// valid, the returned object may indicate an invalid state.</returns>
-        public static IpDnsUrl GetIpDnsUrl(string AdressOrIp)
+        public static IpDnsUrl? GetIpDnsUrl(string AdressOrIp)
             => _dns.IsValidUrl(AdressOrIp);
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace IpDnsDomain
         /// address.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains an <see cref="IpDnsUrl"/>
         /// instance representing the resolved address or IP information.</returns>
-        public static async Task<IpDnsUrl> GetIpDnsUrlAsync(string AdressOrIp)
+        public static async Task<IpDnsUrl?> GetIpDnsUrlAsync(string AdressOrIp)
             => await _dns.IsValidUrlAsync(AdressOrIp);
 
         /// <summary>

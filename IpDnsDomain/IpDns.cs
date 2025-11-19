@@ -8,18 +8,19 @@ namespace IpDnsDomain
     {
         public IpDnsUrl? IsValidUrl(string url)
         {
+            tokenSource.Cancel();
+            tokenSource.TryReset();
             foreach (var item in url.CreateHttpVariants())
             {
                 try
                 {
-                    tokenSource.Cancel();
-                    tokenSource.TryReset();
+
 
                     var result = GetUrl(item);
                     result.EnsureSuccessStatusCode();
                     return new() { OrginalUrl = url, ReachableUrl = item };
                 }
-                catch(OperationCanceledException)
+                catch (OperationCanceledException)
                 {
                     return null;
                 }
@@ -32,18 +33,18 @@ namespace IpDnsDomain
 
         public async Task<IpDnsUrl?> IsValidUrlAsync(string url)
         {
+            await tokenSource.CancelAsync();
+            tokenSource.TryReset();
+
             foreach (var item in url.CreateHttpVariants())
             {
                 try
                 {
-                    await tokenSource.CancelAsync();
-                    tokenSource.TryReset();
-
                     var result = await GetUrlAsync(item);
                     result.EnsureSuccessStatusCode();
                     return new() { OrginalUrl = url, ReachableUrl = item };
                 }
-                catch(OperationCanceledException) 
+                catch (OperationCanceledException)
                 {
                     return null;
                 }
@@ -57,14 +58,13 @@ namespace IpDnsDomain
         public bool TryIsValidUrl(string url, out IpDnsUrl? result)
         {
             result = null;
+            tokenSource.Cancel();
+            tokenSource.TryReset();
 
             foreach (var item in url.CreateHttpVariants())
             {
                 try
                 {
-                    tokenSource.Cancel();
-                    tokenSource.TryReset();
-
                     var req = GetUrl(item);
                     req.EnsureSuccessStatusCode();
                     result = new() { OrginalUrl = url, ReachableUrl = item };
