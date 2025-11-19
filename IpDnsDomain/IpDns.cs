@@ -8,16 +8,14 @@ namespace IpDnsDomain
     {
         public IpDnsUrl? IsValidUrl(string url)
         {
-            tokenSource.Cancel();
-            tokenSource.Dispose();
+            tokenSource?.Cancel();
+            tokenSource?.Dispose();
             tokenSource = new();
 
             foreach (var item in url.CreateHttpVariants())
             {
                 try
                 {
-
-
                     var result = GetUrl(item);
                     result.EnsureSuccessStatusCode();
                     return new() { OrginalUrl = url, ReachableUrl = item };
@@ -35,8 +33,9 @@ namespace IpDnsDomain
 
         public async Task<IpDnsUrl?> IsValidUrlAsync(string url)
         {
-            await tokenSource.CancelAsync();
-            tokenSource.Dispose();
+            if (tokenSource != null)
+                await tokenSource.CancelAsync();
+            tokenSource?.Dispose();
             tokenSource = new();
 
             foreach (var item in url.CreateHttpVariants())
@@ -61,7 +60,8 @@ namespace IpDnsDomain
         public bool TryIsValidUrl(string url, out IpDnsUrl? result)
         {
             result = null;
-            tokenSource.Cancel();
+            tokenSource?.Cancel();
+            tokenSource?.Dispose();
             tokenSource = new();
 
             foreach (var item in url.CreateHttpVariants())
@@ -84,7 +84,7 @@ namespace IpDnsDomain
             return false;
         }
 
-  
+
 
     }
 
