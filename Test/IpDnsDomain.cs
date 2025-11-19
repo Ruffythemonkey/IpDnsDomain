@@ -1,0 +1,42 @@
+﻿using IpDnsDomain;
+using IpDnsDomain.Extensions;
+using IpDnsDomain.Models;
+
+namespace Test
+{
+    public class IpDnsDomain
+    {
+
+        [Fact]
+        public void StringToHttpScheme()
+        {
+            var urls = "testsite.de".CreateHttpVariants();
+
+            Assert.NotEmpty(urls);
+            Assert.All(urls, e => e.StartsWith("http"));
+        }
+
+        [Fact]
+        public void ValidateIpv4()
+        {
+            //heise.de
+            var result = DomainValidator.GetIpDnsUrl("193.99.144.80");
+            Assert.IsType<IpDnsUrl>(result);
+        }
+
+        [Fact]
+        public void ValidateIpv6()
+        {
+            //heise.de
+            var result = DomainValidator.GetIpDnsUrl("[2a02:2e0:3fe:1001:302::]");
+            Assert.IsType<IpDnsUrl>(result);
+        }
+
+        [Fact]
+        public void ValidateAdress() 
+        {
+            var result = DomainValidator.GetIpDnsUrl("http://heise.de");
+            Assert.IsType<IpDnsUrl>(result);
+        }
+    }
+}

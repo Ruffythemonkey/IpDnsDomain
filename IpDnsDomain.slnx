@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="IpDnsDomain/IpDnsDomain.csproj" />
+  <Project Path="Test/Test.csproj" />
+</Solution>
