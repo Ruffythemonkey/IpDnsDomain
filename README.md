@@ -7,7 +7,8 @@ var result = DomainValidator.GetIpDnsUrl("http://heise.de");
 var result = DomainValidator.GetIpDnsUrl("localhost");
 var result = DomainValidator.GetIpDnsUrl("192.168.178.111:234");
 var result = DomainValidator.GetIpDnsUrl("[2a02:2e0:3fe:1001:302::]:22");
-var result = DomainValidator.TryGetIpDnsUrl("https://heise.de", out var ipDnsUrl);;
+var result = DomainValidator.TryGetIpDnsUrl("https://heise.de", out var ipDnsUrl);
+var result = DomainValidator.TryGetIpDnsUrl("google.com", out var ipDnsUrl);
 
 if((await DomainValidator.GetIpDnsUrlAsync("192.168.178.111:234")) is IpDnsUrl domain)
 {
