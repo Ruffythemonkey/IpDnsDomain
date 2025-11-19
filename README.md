@@ -1,6 +1,6 @@
 # IpDnsDomain
 
-#Validating Address or Ip is Reachble
+# Validating Address or Ip is Reachble
 ```c#
 var result = DomainValidator.GetIpDnsUrl("[2a02:2e0:3fe:1001:302::]");
 var result = DomainValidator.GetIpDnsUrl("http://heise.de");
@@ -15,3 +15,10 @@ if((await DomainValidator.GetIpDnsUrlAsync("192.168.178.111:234")) is IpDnsUrl d
 }
 
 ```
+
+# is this Thread-Safe?
+Yes is fully Paralell save
+
+# can it use local lan network addresses
+Yes all Protocols are usable 
+valid addresses without -> dot <- are not accepted only localhost
