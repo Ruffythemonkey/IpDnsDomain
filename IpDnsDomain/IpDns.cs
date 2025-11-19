@@ -39,6 +39,25 @@ namespace IpDnsDomain
             }
             throw new IpDnsDomainException("url is not unattainable");
         }
+
+        public bool TryIsValidUrl(string url,out IpDnsUrl? result)
+        {
+            foreach (var item in url.CreateHttpVariants())
+            {
+                try
+                {
+                    var req = GetUrl(item);
+                    req.EnsureSuccessStatusCode();
+                    result = new() { OrginalUrl = url, ReachableUrl = item };
+                    return true;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            result = null;
+            return false;
+        }
     }
 
 }

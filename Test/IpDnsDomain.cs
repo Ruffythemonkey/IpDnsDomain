@@ -35,8 +35,19 @@ namespace Test
         [Fact]
         public void ValidateAdress() 
         {
+            
             var result = DomainValidator.GetIpDnsUrl("http://heise.de");
             Assert.IsType<IpDnsUrl>(result);
+        }
+
+        [Fact]
+        public void TryValidating()
+        {
+          
+            var result = DomainValidator.TryGetIpDnsUrl("https://heise.de", out var ipDnsUrl);
+
+            Assert.True(result);
+            Assert.NotNull(ipDnsUrl);
         }
     }
 }
