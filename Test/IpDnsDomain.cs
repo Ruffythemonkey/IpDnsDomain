@@ -100,7 +100,7 @@ namespace Test
         public async Task TryReplaceUserAgent()
         {
             DomainValidator.UserAgent = "Ruffy Browser";
-            var x = await DomainValidator.TryGetIpDnsUrlAsync("http://gamestar.de");
+            var x = await DomainValidator.TryGetIpDnsUrlAsync("steamdb.info");
 
             Assert.IsType<IpDnsUrl>(x);
         }
