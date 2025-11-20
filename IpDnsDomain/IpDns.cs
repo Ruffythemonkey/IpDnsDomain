@@ -70,7 +70,7 @@ namespace IpDnsDomain
                 try
                 {
                     var result = await GetUrlAsync(item);
-                    result.StatusProcessing();
+                    //result.StatusProcessing();
                     return new() { OrginalUrl = url, ReachableUrl = item };
                 }
                 catch (OperationCanceledException)
@@ -79,7 +79,7 @@ namespace IpDnsDomain
                 }
                 catch (Exception)
                 {
-
+                   
                 }
             }
             return null;
@@ -97,7 +97,7 @@ namespace IpDnsDomain
                 try
                 {
                     var req = GetUrl(item);
-                    req.StatusProcessing();
+                    //req.StatusProcessing();
 
                     result = new() { OrginalUrl = url, ReachableUrl = item };
                     return true;
