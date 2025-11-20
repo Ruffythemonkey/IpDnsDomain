@@ -22,6 +22,7 @@ namespace IpDnsDomain
 
         /// <summary>
         /// Validates the specified address or IP string and returns an IpDnsUrl representing the result.
+        /// Taking into account the HTTP status code. For example, 403 Forbidden generates an exception.
         /// </summary>
         /// <param name="AdressOrIp">The address or IP string to validate. This can be a domain name, URL, or IPv4/IPv6 address.</param>
         /// <returns>An IpDnsUrl instance containing the parsed and validated address or IP information. If the input is not
@@ -32,6 +33,7 @@ namespace IpDnsDomain
         /// <summary>
         /// Asynchronously resolves the specified address or IP to an <see cref="IpDnsUrl"/> instance, validating
         /// whether it is a well-formed URL or IP address.
+        /// Taking into account the HTTP status code. For example, 403 Forbidden generates an exception.
         /// </summary>
         /// <param name="AdressOrIp">The address or IP string to validate and resolve. This value should be a well-formed URL or a valid IP
         /// address.</param>
@@ -42,6 +44,7 @@ namespace IpDnsDomain
 
         /// <summary>
         /// Attempts to parse the specified address or IP string as an IpDnsUrl.
+        /// Without considering the HTTP status code. For example, 403 Forbidden is true.
         /// </summary>
         /// <param name="AddressOrIp">The address or IP string to parse. Cannot be null.</param>
         /// <param name="result">When this method returns, contains the parsed IpDnsUrl if the operation succeeded; otherwise, null.</param>
@@ -51,6 +54,7 @@ namespace IpDnsDomain
 
         /// <summary>
         /// Attempts to parse the specified address or IP string as an IpDnsUrl.
+        /// Without considering the HTTP status code. For example, 403 Forbidden is true.
         /// </summary>
         /// <param name="AddressOrIp"></param>
         /// <returns>null when result is not valid</returns>
