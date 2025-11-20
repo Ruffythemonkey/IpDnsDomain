@@ -2,6 +2,7 @@
 
 # Validating Address or Ip is Reachble
 ```c#
+//this domains and ip's valid when reachable
 var result = DomainValidator.GetIpDnsUrl("[2a02:2e0:3fe:1001:302::]");
 var result = DomainValidator.GetIpDnsUrl("http://heise.de");
 var result = DomainValidator.GetIpDnsUrl("localhost");
