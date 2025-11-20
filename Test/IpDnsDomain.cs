@@ -14,6 +14,13 @@ namespace Test
 
             Assert.NotEmpty(urls);
             Assert.All(urls, e => e.StartsWith("http"));
+
+            var validate = DomainValidator.TryCreateHttpVariants("localhost.de", out var ourls);
+
+            Assert.True(validate);
+            Assert.NotEmpty(ourls);
+            Assert.All(urls, e => e.StartsWith("http"));
+
         }
 
         [Fact]

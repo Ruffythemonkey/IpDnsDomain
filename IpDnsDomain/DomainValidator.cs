@@ -1,4 +1,5 @@
-﻿using IpDnsDomain.Models;
+﻿using IpDnsDomain.Extensions;
+using IpDnsDomain.Models;
 
 namespace IpDnsDomain
 {
@@ -55,6 +56,18 @@ namespace IpDnsDomain
         /// <returns>null when result is not valid</returns>
         public static async Task<IpDnsUrl?> TryGetIpDnsUrlAsync(string AddressOrIp)
             => await _dns.TryIsValidUrlAsync(AddressOrIp);
+
+        /// <summary>
+        /// Validate is an string a Ipv4, Ipv6, Url Address
+        /// </summary>
+        /// <param name="AdressOrIp"></param>
+        /// <param name="strings"></param>
+        /// <returns>string[] https; http</returns>
+        public static bool TryCreateHttpVariants(string AdressOrIp,out string[] strings)
+        {
+            strings = AdressOrIp.CreateHttpVariants();
+            return strings.Length > 0;
+        }
 
     }
 }
