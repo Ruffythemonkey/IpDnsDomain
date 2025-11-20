@@ -51,7 +51,7 @@ namespace Test
         public void TryValidating()
         {
 
-            var result = DomainValidator.TryGetIpDnsUrl("https://heise.de", out var ipDnsUrl);
+            var result = DomainValidator.TryGetIpDnsUrl("https://gamestar.de", out var ipDnsUrl);
 
             Assert.True(result);
             Assert.NotNull(ipDnsUrl);
@@ -87,6 +87,15 @@ namespace Test
             var results = await Task.WhenAll(tasks);
 
             Assert.IsType<IpDnsUrl>(results.Last());
+        }
+
+        [Fact]
+        public async Task TryReplaceUserAgent()
+        {
+            DomainValidator.UserAgent = "Ruffy Browser";
+            var x = await DomainValidator.TryGetIpDnsUrlAsync("http://gamestar.de");
+
+            Assert.IsType<IpDnsUrl>(x);
         }
     }
 }

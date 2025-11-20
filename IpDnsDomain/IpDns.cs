@@ -1,6 +1,7 @@
 ﻿using IpDnsDomain.Classes;
 using IpDnsDomain.Extensions;
 using IpDnsDomain.Models;
+using System.Runtime.CompilerServices;
 
 namespace IpDnsDomain
 {
@@ -17,7 +18,7 @@ namespace IpDnsDomain
                 try
                 {
                     var result = GetUrl(item);
-                    result.EnsureSuccessStatusCode();
+                    result.StatusProcessing();
                     return new() { OrginalUrl = url, ReachableUrl = item };
                 }
                 catch (OperationCanceledException)
@@ -43,7 +44,7 @@ namespace IpDnsDomain
                 try
                 {
                     var result = await GetUrlAsync(item);
-                    result.EnsureSuccessStatusCode();
+                    result.StatusProcessing();
                     return new() { OrginalUrl = url, ReachableUrl = item };
                 }
                 catch (OperationCanceledException)
@@ -69,7 +70,7 @@ namespace IpDnsDomain
                 try
                 {
                     var result = await GetUrlAsync(item);
-                    result.EnsureSuccessStatusCode();
+                    result.StatusProcessing();
                     return new() { OrginalUrl = url, ReachableUrl = item };
                 }
                 catch (OperationCanceledException)
@@ -78,7 +79,7 @@ namespace IpDnsDomain
                 }
                 catch (Exception)
                 {
-     
+
                 }
             }
             return null;
@@ -96,7 +97,8 @@ namespace IpDnsDomain
                 try
                 {
                     var req = GetUrl(item);
-                    req.EnsureSuccessStatusCode();
+                    req.StatusProcessing();
+
                     result = new() { OrginalUrl = url, ReachableUrl = item };
                     return true;
                 }
@@ -110,6 +112,7 @@ namespace IpDnsDomain
             }
             return false;
         }
+
     }
 
 }

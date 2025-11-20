@@ -7,10 +7,24 @@ internal abstract class Web
         AllowAutoRedirect = true
     })
     {
-        Timeout = TimeSpan.FromSeconds(3)
+        Timeout = TimeSpan.FromSeconds(3),
     };
 
     public CancellationTokenSource tokenSource = new CancellationTokenSource();
+
+    public Web()
+        => UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0";
+
+    public string UserAgent
+    {
+        get => Client.DefaultRequestHeaders.UserAgent.ToString();
+        set {
+            if (string.IsNullOrEmpty(value))
+                return;
+            Client.DefaultRequestHeaders.Remove("User-Agent");
+            Client.DefaultRequestHeaders.Add("User-Agent", value);
+        }
+    }
 
     public TimeSpan Timeout { get => Client.Timeout; set => Client.Timeout = value; }
 

@@ -15,6 +15,11 @@ namespace IpDnsDomain
         public static TimeSpan Timeout { get => _dns.Timeout; set => _dns.Timeout = value; }
 
         /// <summary>
+        /// Set UserAgent default: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0
+        /// </summary>
+        public static string UserAgent { get => _dns.UserAgent; set => _dns.UserAgent = value; }
+
+        /// <summary>
         /// Validates the specified address or IP string and returns an IpDnsUrl representing the result.
         /// </summary>
         /// <param name="AdressOrIp">The address or IP string to validate. This can be a domain name, URL, or IPv4/IPv6 address.</param>
