@@ -72,5 +72,21 @@ namespace Test
 
             Assert.IsType<IpDnsUrl>(results.Last());
         }
+
+        [Fact]
+        public async Task TryValidatingParalell()
+        {
+            List<Task<IpDnsUrl?>> tasks = new List<Task<IpDnsUrl?>>
+            {
+                DomainValidator.TryGetIpDnsUrlAsync("google.de"),
+                DomainValidator.TryGetIpDnsUrlAsync("youtube.com"),
+                DomainValidator.TryGetIpDnsUrlAsync("heise.de"),
+                DomainValidator.TryGetIpDnsUrlAsync("computerbase.de")
+            };
+
+            var results = await Task.WhenAll(tasks);
+
+            Assert.IsType<IpDnsUrl>(results.Last());
+        }
     }
 }
