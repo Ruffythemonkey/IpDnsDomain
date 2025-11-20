@@ -1,6 +1,4 @@
-# IpDnsDomain
-
-# Nuget: https://www.nuget.org/packages/IpDnsDomain/
+# IpDnsDomain ✅
 
 # Validating Address or Ip is Reachble
 ```c#
@@ -26,3 +24,6 @@ Yes is fully Paralell save
 # can it use local lan network addresses
 Yes all Protocols are usable 
 valid addresses without -> dot <- are not accepted only localhost
+
+# Nuget 📦 
+https://www.nuget.org/packages/IpDnsDomain/
