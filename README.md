@@ -10,6 +10,7 @@ var result = DomainValidator.GetIpDnsUrl("[2a02:2e0:3fe:1001:302::]:22");
 var result = DomainValidator.TryGetIpDnsUrl("https://heise.de", out var ipDnsUrl);
 var result = DomainValidator.TryGetIpDnsUrl("google.com", out var ipDnsUrl);
 
+// Pro tipp use this for fast inputs Ui etc...
 if((await DomainValidator.GetIpDnsUrlAsync("192.168.178.111:234")) is IpDnsUrl domain)
 {
   //this is an domainaddress, ipv4, ipv6 (with ports or without ports) which is reachable
