@@ -54,7 +54,34 @@ namespace IpDnsDomain
                 {
                 }
             }
-            throw new IpDnsDomainException("url is not unattainable");
+            throw new IpDnsDomainException("url is unattainable");
+        }
+
+        public async Task<IpDnsUrl?> TryIsValidUrlAsync(string url)
+        {
+            if (tokenSource != null)
+                await tokenSource.CancelAsync();
+            tokenSource?.Dispose();
+            tokenSource = new();
+
+            foreach (var item in url.CreateHttpVariants())
+            {
+                try
+                {
+                    var result = await GetUrlAsync(item);
+                    result.EnsureSuccessStatusCode();
+                    return new() { OrginalUrl = url, ReachableUrl = item };
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception)
+                {
+     
+                }
+            }
+            return null;
         }
 
         public bool TryIsValidUrl(string url, out IpDnsUrl? result)
@@ -83,9 +110,6 @@ namespace IpDnsDomain
             }
             return false;
         }
-
-
-
     }
 
 }

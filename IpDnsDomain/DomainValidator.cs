@@ -43,5 +43,13 @@ namespace IpDnsDomain
         public static bool TryGetIpDnsUrl(string AddressOrIp, out IpDnsUrl? result)
             => _dns.TryIsValidUrl(AddressOrIp, out result);
 
+        /// <summary>
+        /// Attempts to parse the specified address or IP string as an IpDnsUrl.
+        /// </summary>
+        /// <param name="AddressOrIp"></param>
+        /// <returns>null when result is not valid</returns>
+        public static async Task<IpDnsUrl?> TryGetIpDnsUrlAsync(string AddressOrIp)
+            => await _dns.TryIsValidUrlAsync(AddressOrIp);
+
     }
 }
