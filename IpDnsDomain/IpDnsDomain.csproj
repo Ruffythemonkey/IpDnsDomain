@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>IpDnsDomain</Title>
-    <Version>0.0.5</Version>
+    <Version>0.0.6</Version>
     <Copyright>Daniel Schimmelpfennig</Copyright>
     <PackageProjectUrl>https://github.com/Ruffythemonkey/IpDnsDomain</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Ruffythemonkey/IpDnsDomain</RepositoryUrl>
